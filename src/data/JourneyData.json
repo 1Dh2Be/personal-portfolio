@@ -1,0 +1,27 @@
+[
+  {
+    "date": "Jan, 2024",
+    "title": "Discovered Coding",
+    "description": "Wrote my first lines of code and instantly got hooked. Have since explored and delved into HTML, CSS, and JavaScript, building small projects and learning from online resources."
+  },
+  {
+    "date": "Feb, 2024",
+    "title": "Choosing My Path",
+    "description": "Decided to become a full stack engineer. Enrolled in the Meta Front-End Engineer Certificate to master the foundations of web development."
+  },
+  {
+    "date": "Jan, 2025",
+    "title": "Leveling Up",
+    "description": "Started the Meta Back-End Developer Certificate, diving into server-side development and expanding my skills to build complete applications."
+  },
+  {
+    "date": "Mar, 2025",
+    "title": "Building M19 Chat",
+    "description": "Launched my biggest project yet: M19 Chat. A full stack chatbot app that brings multiple LLMs together in one place—my proudest build so far."
+  },
+  {
+    "date": "Now",
+    "title": "Ready for the Next Step",
+    "description": "Currently building my portfolio website and actively looking for my first role as a junior full stack developer."
+  }
+]
