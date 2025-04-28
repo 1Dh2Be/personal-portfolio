@@ -34,7 +34,7 @@ export const StatCard = ({ value, title, description }: StatCardType) => {
         </animated.span>
       </span>
 
-      <hr className="bg-border-primary" />
+      <hr className="border-border-primary" />
       <div className="flex flex-col gap-2">
         <h2 className="md:text-[32px]!">{title}</h2>
         <p className="text-lg">{description}</p>

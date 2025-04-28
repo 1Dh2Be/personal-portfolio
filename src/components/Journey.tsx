@@ -19,7 +19,7 @@ export const Journey = () => {
             My Journey So Far
           </h2>
 
-          <p className="text-lg xl:text-2xl max-w-[600px]">
+          <p className="text-lg xl:text-2xl max-w-[600px] text-text-secondary!">
             Explore the key milestones and experiences that have shaped my path
             in software development and design. From early beginnings to current
             achievements, here's how my journey has unfolded.
