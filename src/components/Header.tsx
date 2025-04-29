@@ -1,7 +1,7 @@
 import { AnimatedText } from "./ui/AnimatedText";
 import { DownArrow } from "@/assets/icons/DownArrow";
 import { Button } from "./ui/Button";
-import { SunIcon } from "@/assets/icons/SunIcon";
+import { ThemeToggleIcon } from "@/assets/icons/ThemeToggleIcon";
 import { MenuIcon } from "@/assets/icons/Menu";
 
 export const Header = () => {
@@ -21,7 +21,7 @@ export const Header = () => {
         </div>
       </section>
 
-      <hr className="text-border-primary mb-4" />
+      <hr className="border-border-primary mb-4 theme-transition" />
 
       <section className="flex items-center">
         <div className="flex-1 flex items-center">
@@ -38,7 +38,7 @@ export const Header = () => {
 
         <nav className="flex items-center gap-2">
           <MenuIcon />
-          <SunIcon />
+          <ThemeToggleIcon />
         </nav>
 
         <div className="flex-1 hidden md:flex items-center justify-end gap-5">
@@ -48,6 +48,8 @@ export const Header = () => {
                 download cv <DownArrow />
               </span>
             }
+            url="/src/assets/resume/Mimoun-Atmani-FullStack-engineer-Resume.pdf"
+            download={true}
           />
           <Button size="lg">Hire me</Button>
         </div>
