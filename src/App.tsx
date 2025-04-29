@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Blog } from "./components/Blog";
 import { DynamicSwitch } from "./components/DynamicSwitch";
 import { Faq } from "./components/Faq";
@@ -10,9 +11,13 @@ import { Stats } from "./components/Stats";
 import { Container } from "./utils/Container";
 
 function App() {
+  const [footerHeight, setFooterHeight] = useState<number>(0);
+
+  console.log(footerHeight);
+
   return (
     <div className="bg-bg-secondary">
-      <Container className="bg-bg-primary min-h-screen theme-transition rounded-b-4xl">
+      <Container className="relative z-[5] bg-bg-primary min-h-screen theme-transition rounded-b-4xl">
         <Hero />
         <Projects />
         <Process />
@@ -22,11 +27,11 @@ function App() {
         <Blog />
         <Faq />
       </Container>
-      <Container>
-        <Footer />
-        {/* <div className="h-screen z-0 w-full bg-text-primary">
-          <h1 className="text-bg-primary">Hello thanks</h1>
-        </div> */}
+
+      <div style={{ height: footerHeight + 50 }} className=" bg-transparent" />
+
+      <Container className="fixed bottom-0 bg-bg-secondary">
+        <Footer setFooterHeight={setFooterHeight} />
       </Container>
     </div>
   );

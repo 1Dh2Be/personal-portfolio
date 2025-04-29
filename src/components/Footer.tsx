@@ -1,14 +1,40 @@
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { AnimatedText } from "./ui/AnimatedText";
 
-export const Footer = () => {
+type FooterProps = {
+  setFooterHeight: Dispatch<SetStateAction<number>>;
+};
+
+export const Footer = ({ setFooterHeight }: FooterProps) => {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateFooterHeight = () => {
+      if (footerRef.current) {
+        setFooterHeight(footerRef.current.offsetHeight);
+      }
+    };
+
+    // Initial height calculation
+    updateFooterHeight();
+
+    // Add resize event listener
+    window.addEventListener("resize", updateFooterHeight);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", updateFooterHeight);
+    };
+  }, [setFooterHeight]);
+
   return (
-    <footer className="h-screen flex flex-col justify-end">
+    <footer ref={footerRef} className="h-fit flex flex-col justify-end">
       {/* First row */}
       <section className="flex flex-col lg:flex-row gap-5">
         {/* left section of first row*/}
         <div className="flex-1 flex flex-col lg:flex-row gap-5">
           <div className="flex-1 flex flex-col gap-2">
-            <h4>Say “Hello”:</h4>
+            <h4>Say "Hello":</h4>
             {/* Currently won't do anything but should open outlook */}
             <a
               href="/"
