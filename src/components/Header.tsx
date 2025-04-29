@@ -26,12 +26,12 @@ export const Header = () => {
       <section className="flex items-center">
         <div className="flex-1 flex items-center">
           <div className="flex-1 hidden md:block">
-            <AnimatedText text="projects" />
+            <AnimatedText text="projects" url="/projects" />
             <h4>More than 15</h4>
           </div>
 
           <div className="flex-1">
-            <AnimatedText text="about" />
+            <AnimatedText text="about" url="/about" />
             <h4>Since sep, 2024</h4>
           </div>
         </div>
