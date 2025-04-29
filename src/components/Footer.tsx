@@ -11,7 +11,7 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
   useEffect(() => {
     const updateFooterHeight = () => {
       if (footerRef.current) {
-        setFooterHeight(footerRef.current.offsetHeight);
+        setFooterHeight?.(footerRef.current.offsetHeight);
       }
     };
 

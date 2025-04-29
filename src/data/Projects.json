@@ -1,0 +1,73 @@
+[
+  {
+    "link": "https://www.m19.chat/",
+    "title": "M19 Chat",
+    "slug": "m19-chat",
+    "subTitle": "A full stack platform integrating diverse AI models.",
+    "longDescription": "M19 Chat addresses the fragmentation of accessing multiple AI models by creating a single, user friendly application. I developed the entire full stack, including robust user authentication, dynamic conversation history, integration with various AI APIs, and a seamless user interface. This project showcases my ability to build complex, real world applications from concept to deployment.",
+    "client": "Personal Project",
+    "services": "Full Stack Development, API Integration, UI/UX Development",
+    "projectType": "Full stack llm web app",
+    "industries": "Artificial Intelligence, Communication, Web Applications",
+    "date": "March, 2025",
+    "image": "/src/assets/images/m19Chat.png",
+    "alt": "My best project M19 Chat",
+    "journey": "Like many, I found myself jumping between different platforms to access various AI capabilities. This fragmentation felt inefficient and clunky, sparking the idea for a single, unified chat interface.\n\nBeyond solving a personal pain point, I also recognized that a project of this complexity, integrating cutting edge AI, would allow me to clearly distinguish myself and my skills from others, demonstrating my ability to take an idea from conception to a tangible application.\n\nAlso, I had just obtained my backend certification which was an additional reason to get started.\n\nIn brief, this is how M19 chat was brought to life, but not without many challenges I had to face along the way, but this will be covered further down.",
+    "technologies": [
+      "React",
+      "Vite",
+      "Django",
+      "Tailwindcss",
+      "Javascript",
+      "Python"
+    ],
+    "challangeIntro": "Building M19 chat presented several interesting technical challenges that required creative problem solving and a deep dive into the technologies.",
+    "challenges": [
+      {
+        "title": "Figuring Out Really Secure User Authentication",
+        "description": "My initial backend certification gave me the basics of authentication using simple bearer tokens, but building a real application like M19 Chat made it clear I needed way stronger security, especially against those nasty Cross Site Scripting (XSS) attacks. It was a bit of a shock realizing the basic approach wasn't enough for real world protection.",
+        "solutionTitle": "Solution:",
+        "solutionDescription": "Okay, so faced with that, I dove deep into how the big companies handle security. That's where I learned about **HTTP only cookies** and why they're a game changer. They stop malicious JavaScript from even touching authentication tokens, which is a common way XSS attacks happen. Switching to this method for M19 Chat was a significant learning curve, but it gave M19 Chat a much stronger shield against potential threats and really leveled up my understanding of building secure systems."
+      },
+      {
+        "title": "The Gap Between Certification and Real World Backend Code",
+        "description": "My backend certification got me started with fundamental concepts, but tackling M19 Chat showed me the huge difference between theory and building something complex in the real world. Things I thought would be straightforward, like creating a custom user model or implementing djoser authentication beyond the simplest setup (especially with JWT tokens which weren't covered deeply), turned into major learning curves. It felt like I was just shown how to walk and then left to figure out how to jump and run by watching others!",
+        "solutionTitle": "Solution:",
+        "solutionDescription": "Honestly, my 'best teacher' during this whole process was AI (big shoutout to Claude!) and endless hours of YouTube. Getting stuck was a daily thing, but instead of waiting for help, I could immediately ask Claude or search for a video explaining exactly what I needed. This instant access to information and different explanations was a game changer. It wasn't easy learning on the fly while building a whole app, but it forced me to become super resourceful and proved I can pick up complex stuff quickly when I need to."
+      },
+      {
+        "title": "The Hard Lesson of Styling Organization",
+        "description": "Early in the M19 Chat project, I fell into the classic trap of prioritizing speed over organization, especially with CSS. I just wanted to get things *working* visually and didn't put enough thought into structuring my styles or using a consistent approach like custom Tailwind color classes from the start.",
+        "solutionTitle": "Lesson Learned:",
+        "solutionDescription": "Oh man, did that come back to haunt me! Introducing a dark theme later was... a real challenge, requiring a ton of extra work to untangle the styling 'messe' I'd created. But hey, you live and you learn! This painful experience was a powerful lesson in the importance of front end architecture. Now, I always start with a solid plan, define color palettes and themes upfront, and ensure a well organized styling approach. I'm much more mindful of how future features or design changes might impact the CSS, promising to never make that mistake again! It taught me that a little upfront organization saves a *lot* of headaches down the line."
+      }
+    ],
+    "finalThoughts": "Building M19 Chat was an incredibly rewarding experience that pushed me significantly as a full stack engineer. Seeing the application come to life, unifying diverse AI capabilities in a single user friendly platform, solidified my passion for building impactful web solutions. Beyond the code, this project taught me the critical importance of planning, robust architecture, and continuous learning – especially when tackling complex features like secure authentication and API integration. I'm incredibly proud of what I accomplished with M19 Chat in a relatively short timeframe, and it's fueled my excitement to take on even larger and more complex challenges in a professional setting."
+  },
+
+  {
+    "title": "Personal website",
+    "slug": "personal-portfolio",
+    "subTitle": "A responsive and visually refined portfolio site to showcase my full stack skills.",
+    "longDescription": "This project involved building a visually refined and fully functional React portfolio website. Key tasks included translating design concepts into code, implementing custom animations for a smooth user experience, ensuring seamless responsiveness across all devices, and optimizing performance for fast loading times. The core aim was to create a polished and professional online presence that effectively highlights my work and capabilities.",
+    "client": "Personal Project",
+    "services": "Frontend Development, UI/UX Adaptation, Performance Optimization",
+    "projectType": "Increasing social presence",
+    "industries": "Web Development, Personal Branding",
+    "date": "April, 2025",
+    "image": "/src/assets/images/WebsiteThumbnail.png",
+    "alt": "My personal portfolio",
+    "journey": "My personal portfolio project was born from a clear goal: to stand out and present myself differently in a competitive job market. Knowing the importance of making a strong first impression and showcasing my abilities beyond a traditional resume, I needed a dedicated space to highlight my work and effectively market myself as a full stack engineer. This project became my platform to demonstrate not just my coding skills, but my understanding of design implementation and creating a polished user experience.",
+    "technologies": ["React", "Vite", "Shadcn", "Tailwindcss", "Javascript"],
+    "challangeIntro": "Building M19 chat presented several interesting technical challenges that required creative problem solving and a deep dive into the technologies.",
+    "challenges": [
+      {
+        "title": "The Challenge of Original Design Creation",
+        "description": "While I'm confident in my ability to translate design concepts into functional and visually appealing front end code, my primary strength lies in engineering rather than original design creation. Coming up with the initial design ideas and making those creative decisions for my portfolio, a skill not deeply emphasized in my coding certifications, was the key challenge.",
+        "solutionTitle": "Solution:",
+        "solutionDescription": "To overcome this, I approached design creation from an engineer's perspective  by studying effective solutions already in the 'wild.' I spent significant time analyzing the design patterns, layouts, typography, and color schemes of well crafted websites and portfolios. This wasn't about copying, but about understanding the underlying principles of good design through observation and breaking down how effective interfaces are structured. This hands on study of existing designs allowed me to make informed creative decisions and build a portfolio that is both visually appealing and functionally sound, solidifying my approach to front end development as a blend of engineering precision and applied design principles."
+      }
+    ],
+    "finalThoughts": "Making my personal portfolio was a project I really enjoyed. Even though I don't have years of experience, I pushed myself to make the UI/UX aspect as good as possible, making sure the website is enjoyable to navigate and looks great on every screen. Honestly, I'm very proud of what I built here.  I know there's still a ton to learn in front end, but every day I feel more and more excited to dive deeper. For some components, I used Shadcn for the first time, not just to copy paste, but to speed things up on parts I already understood how to build from scratch. That's kind of my philosophy: find the easiest path to *learn* something properly, so when I need it again, I know exactly what's going on under the hood. I think that approach is key to learning fast and making sure I can truly distinguish myself."
+  }
+]

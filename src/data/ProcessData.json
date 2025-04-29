@@ -1,0 +1,73 @@
+{
+  "processes": [
+    {
+      "id": 1,
+      "phase": "preparation",
+      "title": "Plan & Design",
+      "description": {
+        "left": "We start by laying a solid foundation understanding your goals, your users, and the best way to bring your ideas to life.",
+        "right": "Every project begins with research, ideation, and clear structure to ensure a smooth process from the start."
+      },
+      "steps": [
+        {
+          "number": "01",
+          "title": "Define project goals and requirements"
+        },
+        {
+          "number": "02",
+          "title": "Research user needs and sketch ideas"
+        },
+        {
+          "number": "03",
+          "title": "Create wireframes or prototypes for clarity"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "phase": "development",
+      "title": "Build",
+      "description": {
+        "left": "With a clear plan, we dive into development—building robust, responsive, and scalable solutions from front to back.",
+        "right": "We focus on seamless integration, clean code, and rapid iteration to bring your vision to life."
+      },
+      "steps": [
+        {
+          "number": "01",
+          "title": "Develop responsive front end and robust back end"
+        },
+        {
+          "number": "02",
+          "title": "Integrate APIs and ensure smooth data flow"
+        },
+        {
+          "number": "03",
+          "title": "Iterate quickly based on feedback"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "phase": "launch",
+      "title": "Deploy & Deliver",
+      "description": {
+        "left": "We launch your project to the world, ensuring everything runs smoothly and is ready to grow.",
+        "right": "From deployment to ongoing support, we make sure your product is reliable, optimized, and ready for users."
+      },
+      "steps": [
+        {
+          "number": "01",
+          "title": "Deploy front end on Vercel or Netlify"
+        },
+        {
+          "number": "02",
+          "title": "Launch back end on AWS for reliability"
+        },
+        {
+          "number": "03",
+          "title": "Monitor, optimize, and support after launch"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 
 interface AnimatedTextProps {
   text: ReactNode;
@@ -14,33 +15,51 @@ export const AnimatedText = ({
   url,
   download = false,
 }: AnimatedTextProps) => {
+  const location = useLocation();
+  const isCurrentPage = url === location.pathname;
+
   const handleClick = (e: React.MouseEvent) => {
-    if (download && url) {
+    if (isCurrentPage || (download && url)) {
       e.preventDefault();
-      window.open(url, "_blank");
+      if (download && url) {
+        window.open(url, "_blank");
+      }
+    } else if (url) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
-    <div className="group relative w-fit h-5 overflow-hidden cursor-pointer">
-      {/* No transition class here because it's already being added on all h3's */}
+    <div className={cn("group relative w-fit h-5 overflow-hidden")}>
       <h3
         className={cn(
-          "relative transform group-hover:translate-y-[-100%]",
+          "relative",
+          !isCurrentPage && "transform group-hover:translate-y-[-100%]",
+          isCurrentPage && "opacity-80",
           className
         )}
       >
-        <a href={url} onClick={handleClick}>
+        <a
+          href={url}
+          onClick={handleClick}
+          className={cn(isCurrentPage ? "cursor-default" : "cursor-pointer")}
+        >
           {text}
         </a>
       </h3>
       <h3
         className={cn(
-          "relative transform group-hover:translate-y-[-95%]",
+          "relative",
+          !isCurrentPage && "transform group-hover:translate-y-[-95%]",
+          isCurrentPage && "opacity-80",
           className
         )}
       >
-        <a href={url} onClick={handleClick}>
+        <a
+          href={url}
+          onClick={handleClick}
+          className={cn(isCurrentPage ? "cursor-default" : "cursor-pointer")}
+        >
           {text}
         </a>
       </h3>
