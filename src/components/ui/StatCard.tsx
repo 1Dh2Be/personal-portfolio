@@ -20,7 +20,7 @@ export const StatCard = ({ value, title, description }: StatCardType) => {
   const spring = useSpring({
     from: { number: 0 },
     to: { number: inView ? end : 0 },
-    config: { tension: 120, friction: 14 },
+    config: { tension: 70, friction: 20 },
   });
 
   return (

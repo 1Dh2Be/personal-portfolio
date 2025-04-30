@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { RootLayout } from "./layout/RootLayout";
 import { Home } from "./pages/Home";
+import { Projects } from "./pages/Projects";
 import { Project } from "./pages/Project";
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
         },
         {
           path: "projects",
+          element: <Projects />,
+        },
+        {
+          path: "projects/:projectSlug",
           element: <Project />,
         },
       ],

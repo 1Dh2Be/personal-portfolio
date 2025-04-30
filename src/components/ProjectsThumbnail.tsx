@@ -31,7 +31,7 @@ const imageMap: ThemeImages = {
   },
 };
 
-export const Projects = () => {
+export const ProjectsThumbnail = () => {
   const { theme } = useTheme();
   const currentTheme = theme === "dark" ? "dark" : "light";
 
@@ -69,6 +69,7 @@ export const Projects = () => {
             projectName={project.title}
             projectType={project.projectType}
             projectDate={project.date}
+            slug={project.slug}
           />
         ))}
       </div>

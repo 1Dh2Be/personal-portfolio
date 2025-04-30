@@ -13,7 +13,7 @@ export const Journey = () => {
 
   return (
     <div ref={scrollSection} className="h-[350vh]">
-      <section className="flex flex-col py-15 md:py-30 xl:py-40 sticky top-0 gap-30">
+      <section className="flex flex-col py-15 md:py-30 xl:py-40 sticky top-0 gap-20 mobile-md:gap-30">
         <div className="flex flex-col gap-5">
           <h2 className="text-text-primary text-3xl md:text-4xl lg:text-[64px] font-bold">
             My Journey So Far
