@@ -30,7 +30,7 @@ export const AnimatedText = ({
   };
 
   return (
-    <div className={cn("group relative w-fit h-5 overflow-hidden")}>
+    <div className={cn("group relative w-fit h-5 overflow-hidden", className)}>
       <h3
         className={cn(
           "relative",

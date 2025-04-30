@@ -37,7 +37,7 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
             <h4>Say "Hello":</h4>
             {/* Currently won't do anything but should open outlook */}
             <a
-              href="/"
+              href="mailto:mimounb1597@gmail.com"
               className="w-fit text-sm text-bg-primary font-bold hover:opacity-80"
             >
               mimounb1597@gmail.com
@@ -92,17 +92,26 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
           <div className="flex-1 flex flex-col gap-2">
             <h4>Links:</h4>
             <ul className="flex gap-5 text-bg-primary">
-              {/* Add correct Links */}
               <li>
                 <h4 className="text-bg-primary">
-                  <a href="">LinkedIn</a>
+                  <a
+                    href="https://www.linkedin.com/in/mimoun-atmani/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
                 </h4>
               </li>
-
-              {/* Add correct Links */}
               <li>
                 <h4 className="text-bg-primary">
-                  <a href="">Github</a>
+                  <a
+                    href="https://github.com/1Dh2Be"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
                 </h4>
               </li>
             </ul>

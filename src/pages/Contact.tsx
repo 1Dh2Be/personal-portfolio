@@ -1,6 +1,7 @@
 import { Container } from "@/utils/Container";
 import { Button } from "@/components/ui/Button";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
+import { useState } from "react";
 
 interface FormValues {
   name: string;
@@ -23,13 +24,47 @@ const textareaStyles = {
 } as const;
 
 export const Contact = () => {
-  const handleSubmit = async (values: FormValues) => {
-    console.log("Form submitted:", values);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+
+  const handleSubmit = async (
+    values: FormValues,
+    { resetForm }: FormikHelpers<FormValues>
+  ) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "2b531d4c-7849-48b3-8be5-c99befe96717",
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setShowSuccess(true);
+        resetForm();
+      } else {
+        setShowError(true);
+      }
+    } catch (error) {
+      setShowError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <Container className="relative z-[5] min-h-screen py-10 bg-bg-primary theme-transition rounded-b-4xl">
-      <div className="flex flex-col gap-16 my-24">
+    <Container className="relative z-[5] min-h-screen py-5 mobile-md:py-10 bg-bg-primary theme-transition rounded-b-4xl">
+      <div className="flex flex-col gap-16 mobile-md:py-10 md:py-0">
         {/* Header */}
         <div className="w-full">
           <div className="flex flex-col gap-4">
@@ -86,12 +121,17 @@ export const Contact = () => {
                       required
                       rows={6}
                       className={textareaStyles.base}
-                      placeholder="Tell me about your project or idea..."
+                      placeholder="Tell me about job opportunities, potential collaborations, or project ideas..."
                     />
                   </label>
 
-                  <Button type="submit" size="xl" className="w-full mt-4">
-                    Send Message
+                  <Button
+                    type="submit"
+                    size="xl"
+                    className="w-full mt-4"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </Form>
               )}
@@ -128,7 +168,7 @@ export const Contact = () => {
                   mimounb1597@gmail.com
                 </a>
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/1Dh2Be"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors"
@@ -152,7 +192,7 @@ export const Contact = () => {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/mimoun-atmani/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors"
@@ -207,6 +247,78 @@ export const Contact = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccess && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-bg-primary p-6 rounded-lg shadow-lg max-w-md w-full mx-4 border border-border-primary">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-text-primary">
+                Success!
+              </h3>
+              <button
+                onClick={() => setShowSuccess(false)}
+                className="text-text-secondary hover:text-text-primary transition-colors"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                >
+                  <path
+                    d="M18 6L6 18M6 6L18 18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <p className="text-text-secondary">
+              Your message has been sent successfully!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Error Modal */}
+      {showError && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-bg-primary p-6 rounded-lg shadow-lg max-w-md w-full mx-4 border border-border-primary">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-text-primary">Error</h3>
+              <button
+                onClick={() => setShowError(false)}
+                className="text-text-secondary hover:text-text-primary transition-colors"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                >
+                  <path
+                    d="M18 6L6 18M6 6L18 18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <p className="text-text-secondary">
+              Failed to send message. Please try again.
+            </p>
+          </div>
+        </div>
+      )}
     </Container>
   );
 };

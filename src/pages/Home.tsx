@@ -10,7 +10,7 @@ import { Container } from "@/utils/Container";
 
 export const Home = () => {
   return (
-    <Container className="relative z-[5] bg-bg-primary min-h-screen theme-transition rounded-b-4xl">
+    <Container className="relative bg-bg-primary min-h-screen theme-transition rounded-b-4xl">
       <Hero />
       <ProjectsThumbnail />
       <Process />

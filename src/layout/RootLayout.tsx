@@ -7,14 +7,14 @@ import { Outlet } from "react-router";
 export const RootLayout = () => {
   const [footerHeight, setFooterHeight] = useState<number>(0);
   return (
-    <div className="bg-bg-secondary">
+    <div className="bg-bg-secondary relative">
       <Header />
 
-      <main>
+      <main className="relative z-[1]">
         <Outlet />
       </main>
 
-      <div style={{ height: footerHeight + 50 }} className=" bg-transparent" />
+      <div style={{ height: footerHeight + 50 }} className="bg-transparent" />
 
       <Container className="fixed bottom-0 bg-bg-secondary">
         <Footer setFooterHeight={setFooterHeight} />

@@ -8,8 +8,8 @@ import { Link } from "react-router";
 
 export const Header = () => {
   return (
-    <Container className="relative z-[5] bg-bg-primary theme-transition">
-      <header className="relative z-[5] bg-bg-primary theme-transition">
+    <Container className="relative z-[2] bg-bg-primary theme-transition">
+      <header className="relative z-[2] bg-bg-primary theme-transition">
         <section className="flex flex-col xl:flex-row xl:items-center">
           <div className="flex-1 flex items-center">
             <a href="/">
