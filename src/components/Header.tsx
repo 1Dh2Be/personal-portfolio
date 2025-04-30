@@ -4,6 +4,7 @@ import { Button } from "./ui/Button";
 import { ThemeToggleIcon } from "@/assets/icons/ThemeToggleIcon";
 import { MenuIcon } from "@/assets/icons/Menu";
 import { Container } from "@/utils/Container";
+import { Link } from "react-router";
 
 export const Header = () => {
   return (
@@ -53,7 +54,9 @@ export const Header = () => {
               url="/src/assets/resume/Mimoun-Atmani-FullStack-engineer-Resume.pdf"
               download={true}
             />
-            <Button size="lg">Hire me</Button>
+            <Button size="lg">
+              <Link to="/contact">Contact me</Link>
+            </Button>
           </div>
         </section>
       </header>

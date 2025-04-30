@@ -3,6 +3,7 @@ import { RootLayout } from "./layout/RootLayout";
 import { Home } from "./pages/Home";
 import { Projects } from "./pages/Projects";
 import { Project } from "./pages/Project";
+import { Contact } from "./pages/Contact";
 
 function App() {
   const router = createBrowserRouter([
@@ -13,6 +14,10 @@ function App() {
         {
           index: true,
           element: <Home />,
+        },
+        {
+          path: "contact",
+          element: <Contact />,
         },
         {
           path: "projects",
