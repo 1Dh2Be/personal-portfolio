@@ -2,7 +2,7 @@ import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { Container } from "@/utils/Container";
 import { Link } from "react-router";
 import { Dispatch, MouseEvent, SetStateAction } from "react";
-import { delay, motion } from "motion/react";
+import { motion } from "motion/react";
 
 type MenuNavigationType = {
   setOpenMenu: Dispatch<SetStateAction<boolean>>;

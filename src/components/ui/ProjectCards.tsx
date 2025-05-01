@@ -24,6 +24,7 @@ export const ProjectCards: React.FC<ProjectCardProps> = ({
 
   return (
     <div
+      data-cursor-trigger
       className="flex flex-col gap-3 mb-5 sm:gap-4 w-full rounded-lg group cursor-pointer"
       onClick={handleClick}
     >
@@ -40,7 +41,7 @@ export const ProjectCards: React.FC<ProjectCardProps> = ({
 
         {/* Project date */}
         <div className="flex-1">
-          <p className="text-sm text-text-secondary drop-shadow-sm text-right lg:text-left ">
+          <p className="text-sm text-text-secondary drop-shadow-sm text-right lg:text-left">
             {projectDate}
           </p>
         </div>
