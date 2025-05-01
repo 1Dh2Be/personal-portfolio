@@ -1,4 +1,5 @@
 import { MenuNavigation } from "@/components/MenuNavigation";
+import { AnimatePresence } from "motion/react";
 import { SVGProps, useState } from "react";
 
 export const MenuIcon = (props: SVGProps<SVGSVGElement>) => {
@@ -40,7 +41,9 @@ export const MenuIcon = (props: SVGProps<SVGSVGElement>) => {
         />
       </svg>
 
-      {openMenu && <MenuNavigation setOpenMenu={setOpenMenu} />}
+      <AnimatePresence>
+        {openMenu && <MenuNavigation setOpenMenu={setOpenMenu} />}
+      </AnimatePresence>
     </>
   );
 };
