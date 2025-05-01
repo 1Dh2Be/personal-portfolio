@@ -1,4 +1,4 @@
-import { useSpring, animated } from "@react-spring/web";
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 type StatCardType = {
@@ -16,12 +16,33 @@ const parseValue = (value: string): { end: number; suffix: string } => {
 export const StatCard = ({ value, title, description }: StatCardType) => {
   const [ref, inView] = useInView();
   const { end, suffix } = parseValue(value);
+  const [count, setCount] = useState(0);
 
-  const spring = useSpring({
-    from: { number: 0 },
-    to: { number: inView ? end : 0 },
-    config: { tension: 70, friction: 20 },
-  });
+  useEffect(() => {
+    if (!inView) return;
+
+    let startValue = 0;
+    const duration = 2000; // ms
+    const frameDuration = 1000 / 60; // 60fps
+    const totalFrames = Math.round(duration / frameDuration);
+    let frame = 0;
+
+    const counter = setInterval(() => {
+      frame++;
+      const progress = frame / totalFrames;
+      const currentCount = Math.round(
+        startValue + progress * (end - startValue)
+      );
+
+      setCount(currentCount);
+
+      if (frame === totalFrames) {
+        clearInterval(counter);
+      }
+    }, frameDuration);
+
+    return () => clearInterval(counter);
+  }, [inView, end]);
 
   return (
     <div
@@ -29,9 +50,8 @@ export const StatCard = ({ value, title, description }: StatCardType) => {
       className="flex h-full flex-col justify-start gap-10 flex-1 text-text-primary"
     >
       <span className="text-8xl md:text-5xl lg:text-7xl 2xl:text-9xl">
-        <animated.span>
-          {spring.number.to((n) => `${Math.round(n)}${suffix}`)}
-        </animated.span>
+        {count}
+        {suffix}
       </span>
 
       <hr className="border-border-primary" />
