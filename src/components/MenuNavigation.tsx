@@ -1,7 +1,7 @@
 import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { Container } from "@/utils/Container";
 import { Link } from "react-router";
-import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useEffect } from "react";
 import { motion } from "motion/react";
 
 type MenuNavigationType = {
@@ -16,6 +16,40 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
     "text-xs tracking-widest text-text-primary/80 uppercase flex justify-center";
 
   const listItemStyles = "py-3 w-fit overflow-hidden";
+
+  const socialLinkStyles = `
+    relative
+    text-text-primary
+    text-sm
+    hover:opacity-70
+    transition-opacity
+    before:content-['']
+    before:absolute
+    before:-bottom-1
+    before:left-0
+    before:w-full
+    before:h-0.5
+    before:bg-text-primary
+    before:origin-left
+    before:scale-x-0
+    before:transition-transform
+    before:duration-200
+    hover:before:scale-x-100
+  `;
+
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    // Save the current overflow value
+    const originalOverflow = document.body.style.overflow;
+
+    // Disable scrolling on body
+    document.body.style.overflow = "hidden";
+
+    // Re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   const handleLinkClick = (e: MouseEvent, path: string) => {
     // Currently adding this check to avoid leading the users to /about and trigger an error
@@ -49,7 +83,7 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
   const textVariants = {
     initial: {
       opacity: 0,
-      y: "100%",
+      y: "calc(100% + 30px)",
     },
     animate: {
       opacity: 1,
@@ -61,7 +95,7 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
     },
     exit: {
       opacity: 0,
-      y: "100%",
+      y: "calc(100% + 30px)",
       transition: {
         duration: 0.3,
         ease: [0.22, 1, 0.36, 1],
@@ -191,6 +225,7 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
           >
             ©2025 ALL RIGHTS RESERVED
           </motion.span>
+
           <div className="flex gap-8">
             <motion.a
               variants={spanVariants("bottom")}
@@ -200,7 +235,7 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
               href="https://www.linkedin.com/in/mimoun-atmani/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-primary text-sm hover:opacity-70 transition-opacity"
+              className={socialLinkStyles}
             >
               LINKEDIN
             </motion.a>
@@ -212,9 +247,21 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
               href="https://github.com/1Dh2Be"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-primary text-sm hover:opacity-70 transition-opacity"
+              className={socialLinkStyles}
             >
               GITHUB
+            </motion.a>
+            <motion.a
+              variants={spanVariants("bottom")}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              href="/src/assets/resume/Mimoun-Atmani-FullStack-engineer-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={socialLinkStyles}
+            >
+              MY RESUME
             </motion.a>
           </div>
         </div>

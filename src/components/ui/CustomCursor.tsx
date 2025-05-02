@@ -7,8 +7,40 @@ export const CustomCursor = () => {
   const cursorY = useMotionValue(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isOverImage, setIsOverImage] = useState(false);
+  const [isOverModal, setIsOverModal] = useState(false);
+  const [hasPointerDevice, setHasPointerDevice] = useState(false);
 
   useEffect(() => {
+    // Check if the device has a pointing device (mouse/trackpad)
+    const checkPointerDevice = () => {
+      const hasPointer = window.matchMedia("(pointer: fine)").matches;
+      setHasPointerDevice(hasPointer);
+    };
+
+    // Initial check
+    checkPointerDevice();
+
+    // Listen for changes in media query (e.g., if user connects a mouse)
+    const mediaQueryList = window.matchMedia("(pointer: fine)");
+    const listener = (event: MediaQueryListEvent) => {
+      setHasPointerDevice(event.matches);
+    };
+
+    return () => {
+      // Clean up with compatibility for older browsers
+      if (mediaQueryList.removeEventListener) {
+        mediaQueryList.removeEventListener("change", listener);
+      } else {
+        // For older browsers
+        mediaQueryList.removeListener(listener);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Only set up cursor if pointer device is detected
+    if (!hasPointerDevice) return;
+
     const updateMousePosition = (e: MouseEvent) => {
       cursorX.set(e.clientX - 1.5);
       cursorY.set(e.clientY - 1.5);
@@ -18,8 +50,14 @@ export const CustomCursor = () => {
       const target = e.target as HTMLElement;
       const isTriggerElement = target.closest("[data-cursor-trigger]");
 
+      // Fix the selector to use proper CSS escape for / in class names
+      const isModalElement = target.closest(
+        ".fixed.inset-0[class*='bg-black']"
+      );
+
       setIsOverImage(target.tagName === "IMG" && !!isTriggerElement);
       setIsHovering(!!isTriggerElement);
+      setIsOverModal(!!isModalElement);
     };
 
     const style = document.createElement("style");
@@ -38,13 +76,21 @@ export const CustomCursor = () => {
       window.removeEventListener("mouseover", handleMouseOver);
       document.head.removeChild(style);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, hasPointerDevice]);
+
+  // If no pointer device, don't render the custom cursor
+  if (!hasPointerDevice) return null;
 
   return (
     <>
       {/* Default cursor */}
       <motion.div
-        className="fixed z-[9999] rounded-full h-3 w-3 bg-white pointer-events-none mix-blend-difference"
+        className={cn(
+          "fixed z-[99999] rounded-full pointer-events-none",
+          isOverModal
+            ? "h-6 w-6 bg-text-primary"
+            : "h-3 w-3 bg-white mix-blend-difference"
+        )}
         style={{
           x: cursorX,
           y: cursorY,
@@ -57,7 +103,7 @@ export const CustomCursor = () => {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed z-[9999] pointer-events-none"
+          className="fixed z-[99999] pointer-events-none"
           style={{
             x: cursorX,
             y: cursorY,

@@ -25,6 +25,7 @@ export const Blog = () => {
             title={entry.title}
             src={entry.src}
             alt={entry.alt}
+            soon={true}
           />
         ))}
       </div>

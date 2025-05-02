@@ -2,6 +2,7 @@ import { Container } from "@/utils/Container";
 import { Button } from "@/components/ui/Button";
 import { Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
+import { Modal } from "@/components/ui/Modal";
 
 interface FormValues {
   name: string;
@@ -232,7 +233,7 @@ export const Contact = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 mb-15">
               <h2 className="text-2xl font-semibold text-text-primary">
                 Current Status
               </h2>
@@ -250,74 +251,20 @@ export const Contact = () => {
 
       {/* Success Modal */}
       {showSuccess && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-bg-primary p-6 rounded-lg shadow-lg max-w-md w-full mx-4 border border-border-primary">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-text-primary">
-                Success!
-              </h3>
-              <button
-                onClick={() => setShowSuccess(false)}
-                className="text-text-secondary hover:text-text-primary transition-colors"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                >
-                  <path
-                    d="M18 6L6 18M6 6L18 18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            <p className="text-text-secondary">
-              Your message has been sent successfully!
-            </p>
-          </div>
-        </div>
+        <Modal
+          title="Success!"
+          description="Your message has been sent successfully!"
+          onClose={() => setShowSuccess(false)}
+        />
       )}
 
       {/* Error Modal */}
       {showError && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-bg-primary p-6 rounded-lg shadow-lg max-w-md w-full mx-4 border border-border-primary">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-text-primary">Error</h3>
-              <button
-                onClick={() => setShowError(false)}
-                className="text-text-secondary hover:text-text-primary transition-colors"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                >
-                  <path
-                    d="M18 6L6 18M6 6L18 18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            <p className="text-text-secondary">
-              Failed to send message. Please try again.
-            </p>
-          </div>
-        </div>
+        <Modal
+          title="Error"
+          description="Failed to send message. Please try again."
+          onClose={() => setShowError(false)}
+        />
       )}
     </Container>
   );
