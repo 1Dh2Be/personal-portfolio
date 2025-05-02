@@ -36,7 +36,7 @@ export const ProjectsThumbnail = () => {
   const currentTheme = theme === "dark" ? "dark" : "light";
 
   return (
-    <section className="my-15 md:my-30 py-2">
+    <section id="projects" className="pt-8 lg:pt-20 pb-15 md:pb-30">
       <div className="gap-4 lg:gap-8 flex flex-col md:flex-row justify-between items-start mb-8">
         <h2 className="text-text-primary text-3xl md:text-4xl lg:text-[64px] font-bold flex-1">
           Recent works

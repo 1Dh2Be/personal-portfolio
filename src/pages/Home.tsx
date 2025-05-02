@@ -10,15 +10,22 @@ import { Container } from "@/utils/Container";
 
 export const Home = () => {
   return (
-    <Container className="relative bg-bg-primary min-h-screen theme-transition rounded-b-4xl">
-      <Hero />
-      <ProjectsThumbnail />
-      <Process />
-      <DynamicSwitch />
-      <Journey />
-      <Stats />
-      <Blog />
-      <Faq />
-    </Container>
+    <div className="relative bg-bg-primary min-h-screen theme-transition">
+      <div className="hero-height relative">
+        <Container>
+          <Hero />
+        </Container>
+      </div>
+
+      <Container>
+        <ProjectsThumbnail />
+        <Process />
+        <DynamicSwitch />
+        <Journey />
+        <Stats />
+        <Blog />
+        <Faq />
+      </Container>
+    </div>
   );
 };

@@ -22,7 +22,7 @@ export const StatCard = ({ value, title, description }: StatCardType) => {
     if (!inView) return;
 
     let startValue = 0;
-    const duration = 2000; // ms
+    const duration = 1000; // ms
     const frameDuration = 1000 / 60; // 60fps
     const totalFrames = Math.round(duration / frameDuration);
     let frame = 0;

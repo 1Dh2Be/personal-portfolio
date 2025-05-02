@@ -8,6 +8,7 @@
   --font-Manrope: "Manrope", "sans-serif"; /* Font for numbers */
 
   --breakpoint-mobile-md: 400px; /* For bigger phones (12 pro max etc)*/
+  --breakpoint-tall-narrow: 1.5; /* Ratio for unusually tall screens */
 
   /* Base Colors */
   --color-white: #fff;
@@ -158,6 +159,28 @@
 
 .theme-transition {
   @apply transition-colors duration-300 ease-in-out;
+}
+
+/* Hero section layout - takes 100vh until lg breakpoint */
+.hero-height {
+  @apply h-auto;
+  @apply lg:h-auto;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  /* Tablets (iPad Mini, iPad Air, etc.) use auto height */
+  .hero-height {
+    height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Only apply fixed height for phones when not unusually tall viewport */
+  @media (max-aspect-ratio: 3/2) {
+    .hero-height {
+      height: 100vh;
+    }
+  }
 }
 
 @layer base {

@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <Container className="relative z-[2] bg-bg-primary theme-transition">
       <header className="relative bg-bg-primary theme-transition">
-        <section className="flex flex-col xl:flex-row xl:items-center">
+        <section className="flex flex-col lg:flex-row xl:items-center">
           <div className="flex-1 flex items-center">
             <a href="/">
               <h1>MIMOUN</h1>
