@@ -1,10 +1,10 @@
 import BlogData from "../data/BlogData.json";
-import { ArticleHero } from "./ui/ArticleHero";
+import { ArticleHero, type ArticleHeroType } from "./ui/ArticleHero";
 
-// Define the type for BlogData entries to match ArticleHero requirements
+// Define the type for BlogData entries
 type BlogEntry = {
   title: string;
-  src: "empty-park-bench" | "infinite-staircase" | "tunnel";
+  src: ArticleHeroType["src"];
   alt: string;
   description: string;
 };

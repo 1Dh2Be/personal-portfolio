@@ -6,16 +6,14 @@ import { Modal } from "./Modal";
 // Import article images
 import EmptyParkBench from "../../assets/images/EmptyParkBench.png";
 import InfiniteStairCase from "../../assets/images/InfiniteStairCase.png";
-import Tunnel from "../../assets/images/Tunnel.png";
 
 // Create a mapping of image names to their imported versions
-const articleImages = {
+export const articleImages = {
   "empty-park-bench": EmptyParkBench,
   "infinite-staircase": InfiniteStairCase,
-  tunnel: Tunnel,
 } as const;
 
-type ArticleHeroType = {
+export type ArticleHeroType = {
   index: number;
   title: string;
   src: keyof typeof articleImages;
