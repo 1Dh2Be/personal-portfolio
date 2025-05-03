@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { ProjectCards } from "@/components/ui/ProjectCards";
 import { Container } from "@/utils/Container";
 import m19ChatBlack from "../assets/png/m19ChatBlack.png";
