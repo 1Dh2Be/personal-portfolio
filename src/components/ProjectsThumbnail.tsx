@@ -1,8 +1,8 @@
 //Image(s) imported here
 import m19ChatBlack from "../assets/Images/m19ChatBlack.png";
 import m19ChatWhite from "../assets/Images/m19ChatWhite.png";
-import websiteThumbnailBlack from "../assets/Images/WebsiteThumbnailBlack.png";
-import websiteThumbnailWhite from "../assets/Images/WebsiteThumbnailWhite.png";
+import websiteThumbnailBlack from "../assets/images/WebsiteThumbnailBlack.png";
+import websiteThumbnailWhite from "../assets/images/WebsiteThumbnailWhite.png";
 
 //Project Data imported here
 import ProjectsData from "../data/Projects.json";
