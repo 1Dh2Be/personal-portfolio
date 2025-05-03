@@ -1,21 +1,21 @@
 import { Container } from "@/utils/Container";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import ProjectsData from "@/data/Projects.json";
 import { useTheme } from "@/context/ThemeContext";
-import m19ChatBlack from "@/assets/Images/m19ChatBlack.png";
-import m19ChatWhite from "@/assets/Images/m19ChatWhite.png";
-import websiteThumbnailBlack from "@/assets/Images/WebsiteThumbnailBlack.png";
-import websiteThumbnailWhite from "@/assets/Images/WebsiteThumbnailWhite.png";
+import m19ChatBlack from "@/assets/png/m19ChatBlack.png";
+import m19ChatWhite from "@/assets/png/m19ChatWhite.png";
+import websiteThumbnailBlack from "@/assets/png/WebsiteThumbnailBlack.png";
+import websiteThumbnailWhite from "@/assets/png/WebsiteThumbnailWhite.png";
 import { Button } from "@/components/ui/Button";
 
-const imageMap = {
+const imageMap: any = {
   light: {
-    "/src/assets/images/m19Chat.png": m19ChatBlack,
-    "/src/assets/images/WebsiteThumbnail.png": websiteThumbnailBlack,
+    "/src/assets/png/m19Chat.png": m19ChatBlack,
+    "/src/assets/png/WebsiteThumbnail.png": websiteThumbnailBlack,
   },
   dark: {
-    "/src/assets/images/m19Chat.png": m19ChatWhite,
-    "/src/assets/images/WebsiteThumbnail.png": websiteThumbnailWhite,
+    "/src/assets/png/m19Chat.png": m19ChatWhite,
+    "/src/assets/png/WebsiteThumbnail.png": websiteThumbnailWhite,
   },
 };
 

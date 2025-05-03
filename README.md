@@ -16,8 +16,8 @@ A modern, responsive portfolio website showcasing my expertise as a Full Stack E
 The interface implements a cohesive design system featuring both light and dark modes:
 
 <div align="center">
-  <img src="src/assets/Images/WebsiteThumbnailBlack.png" alt="Light Mode Interface" width="48%">
-  <img src="src/assets/Images/WebsiteThumbnailWhite.png" alt="Dark Mode Interface" width="48%">
+  <img src="src/assets/png/WebsiteThumbnailBlack.png" alt="Light Mode Interface" width="48%">
+  <img src="src/assets/png/WebsiteThumbnailWhite.png" alt="Dark Mode Interface" width="48%">
 </div>
 
 ## Strategic Objectives
@@ -55,7 +55,7 @@ This platform serves as:
 /src
 ├── components/    # Reusable UI component library
 ├── pages/         # Primary page compositions
-├── assets/        # Static resources (images, icons)
+├── assets/        # Static resources (png, icons)
 ├── context/       # React context providers
 ├── utils/         # Utility functions and helpers
 └── data/          # Content and configuration files

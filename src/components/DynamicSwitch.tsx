@@ -1,4 +1,4 @@
-import planeViewImage from "../assets/Images/Tunnel.png";
+import planeViewImage from "../assets/png/Tunnel.png";
 
 export const DynamicSwitch = () => {
   return (

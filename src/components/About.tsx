@@ -1,6 +1,6 @@
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { Avatar } from "./ui/avatar";
-import profilePicture from "../assets/Images/Me.jpeg";
+import profilePicture from "../assets/png/Me.jpeg";
 import { DotIcon } from "@/assets/icons/DotIcon";
 
 export const About = () => {

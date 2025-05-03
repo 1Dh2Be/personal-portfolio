@@ -1,8 +1,8 @@
 //Image(s) imported here
-import m19ChatBlack from "../assets/Images/m19ChatBlack.png";
-import m19ChatWhite from "../assets/Images/m19ChatWhite.png";
-import websiteThumbnailBlack from "../assets/images/WebsiteThumbnailBlack.png";
-import websiteThumbnailWhite from "../assets/images/WebsiteThumbnailWhite.png";
+import m19ChatBlack from "../assets/png/m19ChatBlack.png";
+import m19ChatWhite from "../assets/png/m19ChatWhite.png";
+import websiteThumbnailBlack from "../assets/png/WebsiteThumbnailBlack.png";
+import websiteThumbnailWhite from "../assets/png/WebsiteThumbnailWhite.png";
 
 //Project Data imported here
 import ProjectsData from "../data/Projects.json";
@@ -22,12 +22,12 @@ type ThemeImages = {
 // Create a mapping between image paths and imported images for both themes
 const imageMap: ThemeImages = {
   light: {
-    "/src/assets/images/m19Chat.png": m19ChatBlack,
-    "/src/assets/images/WebsiteThumbnail.png": websiteThumbnailBlack,
+    "/src/assets/png/m19Chat.png": m19ChatBlack,
+    "/src/assets/png/WebsiteThumbnail.png": websiteThumbnailBlack,
   },
   dark: {
-    "/src/assets/images/m19Chat.png": m19ChatWhite,
-    "/src/assets/images/WebsiteThumbnail.png": websiteThumbnailWhite,
+    "/src/assets/png/m19Chat.png": m19ChatWhite,
+    "/src/assets/png/WebsiteThumbnail.png": websiteThumbnailWhite,
   },
 };
 

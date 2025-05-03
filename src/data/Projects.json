@@ -10,7 +10,7 @@
     "projectType": "Full stack llm web app",
     "industries": "Artificial Intelligence, Communication, Web Applications",
     "date": "March, 2025",
-    "image": "/src/assets/images/m19Chat.png",
+    "image": "/src/assets/png/m19Chat.png",
     "alt": "My best project M19 Chat",
     "journey": "Like many, I found myself jumping between different platforms to access various AI capabilities. This fragmentation felt inefficient and clunky, sparking the idea for a single, unified chat interface.\n\nBeyond solving a personal pain point, I also recognized that a project of this complexity, integrating cutting edge AI, would allow me to clearly distinguish myself and my skills from others, demonstrating my ability to take an idea from conception to a tangible application.\n\nAlso, I had just obtained my backend certification which was an additional reason to get started.\n\nIn brief, this is how M19 chat was brought to life, but not without many challenges I had to face along the way, but this will be covered further down.",
     "technologies": [
@@ -55,7 +55,7 @@
     "projectType": "Increasing social presence",
     "industries": "Web Development, Personal Branding",
     "date": "April, 2025",
-    "image": "/src/assets/images/WebsiteThumbnail.png",
+    "image": "/src/assets/png/WebsiteThumbnail.png",
     "alt": "My personal portfolio",
     "journey": "My personal portfolio project was born from a clear goal: to stand out and present myself differently in a competitive job market. Knowing the importance of making a strong first impression and showcasing my abilities beyond a traditional resume, I needed a dedicated space to highlight my work and effectively market myself as a full stack engineer. This project became my platform to demonstrate not just my coding skills, but my understanding of design implementation and creating a polished user experience.",
     "technologies": ["React", "Vite", "Shadcn", "Tailwindcss", "Javascript"],

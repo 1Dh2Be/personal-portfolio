@@ -1,10 +1,12 @@
 import BlogData from "../data/BlogData.json";
 import { ArticleHero } from "./ui/ArticleHero";
 
-// Define image paths from public folder (these will be available at the root URL in production)
+import EmptyParkBench from "../assets/png/EmptyParkBench.png";
+import InfiniteStairCase from "../assets/png/InfiniteStairCase.png";
+
 const imageMapping = {
-  "empty-park-bench": "/images/EmptyParkBench.png",
-  "infinite-staircase": "/images/InfiniteStairCase.png",
+  "empty-park-bench": EmptyParkBench,
+  "infinite-staircase": InfiniteStairCase,
 };
 
 // Define the type for BlogData entries
