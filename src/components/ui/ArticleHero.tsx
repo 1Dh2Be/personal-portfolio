@@ -3,9 +3,9 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "./Modal";
 
-// Import article images with absolute paths from src
-import EmptyParkBench from "/src/assets/images/EmptyParkBench.png";
-import InfiniteStairCase from "/src/assets/images/InfiniteStairCase.png";
+// Import images using the @ alias defined in vite config
+import EmptyParkBench from "@/assets/images/EmptyParkBench.png";
+import InfiniteStairCase from "@/assets/images/InfiniteStairCase.png";
 
 // Create a mapping of image names to their imported versions
 export const articleImages = {
