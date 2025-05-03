@@ -1,6 +1,14 @@
 import BlogData from "../data/BlogData.json";
 import { ArticleHero } from "./ui/ArticleHero";
 
+// Define the type for BlogData entries to match ArticleHero requirements
+type BlogEntry = {
+  title: string;
+  src: "empty-park-bench" | "infinite-staircase" | "tunnel";
+  alt: string;
+  description: string;
+};
+
 export const Blog = () => {
   return (
     <section className="py-15 md:py-30 xl:py-40">
@@ -11,14 +19,14 @@ export const Blog = () => {
         <p className="text-lg xl:text-2xl max-w-[800px] text-text-secondary!">
           A space to share my thoughts, lessons, and experiences beyond work,
           beyond titles. Here, I explore what shapes me, what challenges me, and
-          what I’m learning along the way. This is my voice, unfiltered.
+          what I'm learning along the way. This is my voice, unfiltered.
         </p>
       </div>
 
       <hr className="my-10 border-border-primary" />
 
       <div>
-        {BlogData.map((entry, i) => (
+        {(BlogData as BlogEntry[]).map((entry, i) => (
           <ArticleHero
             key={i}
             index={i + 1}
