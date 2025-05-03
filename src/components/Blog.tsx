@@ -1,10 +1,20 @@
 import BlogData from "../data/BlogData.json";
-import { ArticleHero, type ArticleHeroType } from "./ui/ArticleHero";
+import { ArticleHero } from "./ui/ArticleHero";
+
+// Import images directly
+import EmptyParkBench from "../assets/images/EmptyParkBench.png";
+import InfiniteStairCase from "../assets/images/InfiniteStairCase.png";
+
+// Create an image mapping object
+const imageMapping = {
+  "empty-park-bench": EmptyParkBench,
+  "infinite-staircase": InfiniteStairCase,
+};
 
 // Define the type for BlogData entries
 type BlogEntry = {
   title: string;
-  src: ArticleHeroType["src"];
+  src: keyof typeof imageMapping;
   alt: string;
   description: string;
 };
@@ -31,7 +41,7 @@ export const Blog = () => {
             key={i}
             index={i + 1}
             title={entry.title}
-            src={entry.src}
+            src={imageMapping[entry.src]}
             alt={entry.alt}
             soon={true}
           />

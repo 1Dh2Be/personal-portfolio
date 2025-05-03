@@ -3,20 +3,10 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "./Modal";
 
-// Import images using the @ alias defined in vite config
-import EmptyParkBench from "@/assets/images/EmptyParkBench.png";
-import InfiniteStairCase from "@/assets/images/InfiniteStairCase.png";
-
-// Create a mapping of image names to their imported versions
-export const articleImages = {
-  "empty-park-bench": EmptyParkBench,
-  "infinite-staircase": InfiniteStairCase,
-} as const;
-
 export type ArticleHeroType = {
   index: number;
   title: string;
-  src: keyof typeof articleImages;
+  src: string;
   alt: string;
   soon: boolean;
 };
@@ -111,11 +101,7 @@ export const ArticleHero = ({
               x: imageX,
             }}
           >
-            <img
-              src={articleImages[src]}
-              alt={alt}
-              className="object-cover w-full h-full"
-            />
+            <img src={src} alt={alt} className="object-cover w-full h-full" />
           </motion.div>
         </motion.div>
       </motion.div>
