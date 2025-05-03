@@ -3,10 +3,22 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "./Modal";
 
+// Import article images
+import EmptyParkBench from "../../assets/images/EmptyParkBench.png";
+import InfiniteStairCase from "../../assets/images/InfiniteStairCase.png";
+import Tunnel from "../../assets/images/Tunnel.png";
+
+// Create a mapping of image names to their imported versions
+const articleImages = {
+  "empty-park-bench": EmptyParkBench,
+  "infinite-staircase": InfiniteStairCase,
+  tunnel: Tunnel,
+} as const;
+
 type ArticleHeroType = {
   index: number;
   title: string;
-  src: string;
+  src: keyof typeof articleImages;
   alt: string;
   soon: boolean;
 };
@@ -101,7 +113,11 @@ export const ArticleHero = ({
               x: imageX,
             }}
           >
-            <img src={src} alt={alt} className="object-cover w-full h-full" />
+            <img
+              src={articleImages[src]}
+              alt={alt}
+              className="object-cover w-full h-full"
+            />
           </motion.div>
         </motion.div>
       </motion.div>
