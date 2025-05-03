@@ -114,6 +114,17 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
                   </a>
                 </h4>
               </li>
+              <li>
+                <h4 className="text-bg-primary">
+                  <a
+                    href="/src/assets/resume/Mimoun-Atmani-FullStack-engineer-Resume.pdf"
+                    download
+                    rel="noopener noreferrer"
+                  >
+                    Resume
+                  </a>
+                </h4>
+              </li>
             </ul>
           </div>
         </div>

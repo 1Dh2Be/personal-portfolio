@@ -73,20 +73,22 @@ export const ArticleHero = ({
       >
         {/* Left Section */}
         <div className="flex xl:flex-1 flex-col justify-center">
-          <div>
+          <div className="flex gap-5">
             <span className="text-lg text-text-secondary tracking-widest mb-2">
               // {index}
             </span>
-            {soon && (
-              <span className="text-sm text-accent-primary mt-2">
-                Coming soon
-              </span>
-            )}
           </div>
 
           <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-text-primary">
             {title}
           </span>
+
+          {soon && (
+            <span className="flex w-fit mt-5 items-center gap-5 p-2 rounded-t-lg text-lg text-accent-primary mb-2 bg-yellow-200">
+              <span>👀</span>
+              Coming soon
+            </span>
+          )}
         </div>
 
         {/* Right Section */}

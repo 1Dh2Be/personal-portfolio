@@ -1,13 +1,13 @@
 [
   {
     "title": "The Vicious Cycle of Pursuing Perfection",
-    "src": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
+    "src": "src/assets/images/InfiniteStairCase.png",
     "alt": "A spiral staircase shot from above, symbolizing going in circles",
     "description": "Reflecting on how the pursuit of perfection can trap us in endless cycles of self-doubt and unfinished work, and learning to embrace imperfection."
   },
   {
     "title": "The Lack of Human Interactions on Me",
-    "src": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "src": "src/assets/images/EmptyParkBench.png",
     "alt": "A single chair in an empty room, evoking loneliness and absence",
     "description": "Exploring the impact of solitude and the longing for meaningful connections in a world that often feels distant."
   }

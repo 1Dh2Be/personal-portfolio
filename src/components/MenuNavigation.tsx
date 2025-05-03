@@ -226,7 +226,7 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
             ©2025 ALL RIGHTS RESERVED
           </motion.span>
 
-          <div className="flex gap-8">
+          <div className="flex gap-8 justify-center w-full sm:w-fit">
             <motion.a
               variants={spanVariants("bottom")}
               initial="initial"
@@ -257,7 +257,7 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
               animate="animate"
               exit="exit"
               href="/src/assets/resume/Mimoun-Atmani-FullStack-engineer-Resume.pdf"
-              target="_blank"
+              download
               rel="noopener noreferrer"
               className={socialLinkStyles}
             >

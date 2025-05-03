@@ -22,7 +22,13 @@ export const AnimatedText = ({
     if (isCurrentPage || (download && url)) {
       e.preventDefault();
       if (download && url) {
-        window.open(url, "_blank");
+        // Create a temporary link element to trigger download
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = url.split("/").pop() || "download";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
     } else if (url) {
       window.scrollTo({ top: 0, behavior: "smooth" });
