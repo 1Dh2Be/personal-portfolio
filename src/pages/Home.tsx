@@ -10,7 +10,7 @@ import { Container } from "@/utils/Container";
 
 export const Home = () => {
   return (
-    <div className="relative bg-bg-primary min-h-screen theme-transition">
+    <div className="relative bg-bg-primary min-h-screen theme-transition rounded-b-4xl">
       <div className="hero-height relative">
         <Container>
           <Hero />

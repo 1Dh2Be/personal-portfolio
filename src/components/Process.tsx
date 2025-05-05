@@ -2,11 +2,13 @@ import { useState } from "react";
 import { ProcessRow } from "./ui/ProcessRow";
 import { motion, AnimatePresence } from "framer-motion";
 import processData from "../data/ProcessData.json";
+import { useIsMobile } from "../utils/device";
 
 export const Process = () => {
   const [currentSection, setCurrentSection] = useState(1);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
-  const viewportOptions = { amount: 1, once: false };
+  const isMobile = useIsMobile();
+  const viewportOptions = { amount: isMobile ? 0.3 : 1, once: false };
 
   const handleViewportEnter = (id: number) => {
     setScrollDirection(id > currentSection ? "down" : "up");
