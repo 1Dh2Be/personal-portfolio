@@ -83,7 +83,7 @@ export const AnimatedText = ({
       {isAboutModalOpen && (
         <Modal
           title="About Me"
-          description="This section provides information about me. Replace this with actual content."
+          description="About me content isn't available yet, but it's coming soon! Thank you for your patience."
           onClose={() => setIsAboutModalOpen(false)}
         />
       )}
