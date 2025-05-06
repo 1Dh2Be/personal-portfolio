@@ -5,6 +5,26 @@ type FooterProps = {
   setFooterHeight: Dispatch<SetStateAction<number>>;
 };
 
+const socialLinkStyles = `
+    relative
+    text-bg-primary
+    text-sm
+    hover:opacity-70
+    transition-opacity
+    before:content-['']
+    before:absolute
+    before:-bottom-1
+    before:left-0
+    before:w-full
+    before:h-0.5
+    before:bg-bg-primary
+    before:origin-left
+    before:scale-x-0
+    before:transition-transform
+    before:duration-200
+    hover:before:scale-x-100
+  `;
+
 export const Footer = ({ setFooterHeight }: FooterProps) => {
   const footerRef = useRef<HTMLElement>(null);
 
@@ -91,9 +111,9 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
 
           <div className="flex-1 flex flex-col gap-2">
             <h4>Links:</h4>
-            <ul className="flex gap-5 text-bg-primary">
+            <ul className="flex gap-5">
               <li>
-                <h4 className="text-bg-primary">
+                <h4 className={socialLinkStyles}>
                   <a
                     href="https://www.linkedin.com/in/mimoun-atmani/"
                     target="_blank"
@@ -104,7 +124,7 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
                 </h4>
               </li>
               <li>
-                <h4 className="text-bg-primary">
+                <h4 className={socialLinkStyles}>
                   <a
                     href="https://github.com/1Dh2Be"
                     target="_blank"
@@ -115,7 +135,7 @@ export const Footer = ({ setFooterHeight }: FooterProps) => {
                 </h4>
               </li>
               <li>
-                <h4 className="text-bg-primary">
+                <h4 className={socialLinkStyles}>
                   <a
                     href="/src/assets/resume/Mimoun-Atmani-FullStack-engineer-Resume.pdf"
                     download

@@ -3,6 +3,7 @@ import { Container } from "@/utils/Container";
 import { Link } from "react-router";
 import { Dispatch, MouseEvent, SetStateAction, useEffect } from "react";
 import { motion } from "motion/react";
+import { ThemeToggleIcon } from "@/assets/icons/ThemeToggleIcon";
 
 type MenuNavigationType = {
   setOpenMenu: Dispatch<SetStateAction<boolean>>;
@@ -163,9 +164,9 @@ export const MenuNavigation = ({ setOpenMenu }: MenuNavigationType) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="text-text-primary text-sm hidden md:block w-1/3 text-right"
+            className="justify-end text-text-primary text-sm hidden md:flex w-1/3"
           >
-            CONTACT NOW
+            <ThemeToggleIcon />
           </motion.span>
         </div>
 

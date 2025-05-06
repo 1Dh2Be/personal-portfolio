@@ -135,7 +135,7 @@ export const Project = () => {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                      className="px-3 py-1 bg-bg-secondary text-bg-primary rounded-full text-sm"
                     >
                       {tech}
                     </span>
