@@ -6,8 +6,10 @@ import { Project } from "./pages/Project";
 import { Contact } from "./pages/Contact";
 
 import { ReactLenis } from "lenis/react";
+import { useIsMobile } from "./utils/device";
 
 function App() {
+  const isMobile = useIsMobile();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -32,6 +34,11 @@ function App() {
       ],
     },
   ]);
+
+  // If on mobile, don't use Lenis smooth scrolling (causing issues)
+  if (isMobile) {
+    return <RouterProvider router={router} />;
+  }
 
   return (
     <ReactLenis
