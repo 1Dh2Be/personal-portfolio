@@ -4,13 +4,15 @@ import React, { useEffect, ReactNode } from "react";
 
 type ModalType = {
   title: string;
-  children: ReactNode;
+  description?: string;
+  children?: ReactNode;
   onClose?: () => void;
   showContactButton?: boolean;
 };
 
 export const Modal = ({
   title,
+  description,
   children,
   onClose,
   showContactButton,
@@ -56,7 +58,10 @@ export const Modal = ({
     >
       <div className="flex flex-col gap-3 p-6 bg-bg-secondary rounded-lg max-w-md">
         <h3 className="text-xl font-bold text-bg-primary">{title}</h3>
-        <div className="mb-4 text-bg-primary">{children}</div>
+        {description && (
+          <div className="mb-2 text-bg-primary">{description}</div>
+        )}
+        {children && <div className="mb-4 text-bg-primary">{children}</div>}
         <div className="flex gap-2">
           <Button className="flex-1" variant="secondary" onClick={handleClose}>
             Close
