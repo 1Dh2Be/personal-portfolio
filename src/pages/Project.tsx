@@ -7,6 +7,9 @@ import m19ChatWhite from "@/assets/png/m19ChatWhite.png";
 import websiteThumbnailBlack from "@/assets/png/WebsiteThumbnailBlack.png";
 import websiteThumbnailWhite from "@/assets/png/WebsiteThumbnailWhite.png";
 import { Button } from "@/components/ui/Button";
+import { Modal } from "@/components/ui/Modal";
+import { useState } from "react";
+import React from "react";
 
 const imageMap: any = {
   light: {
@@ -25,6 +28,17 @@ export const Project = () => {
   const currentTheme = theme === "dark" ? "dark" : "light";
 
   const project = ProjectsData.find((p) => p.slug === projectSlug);
+
+  const [showWarningModal, setShowWarningModal] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
+  // Handle redirect after modal confirmation
+  React.useEffect(() => {
+    if (redirect && project?.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+      setRedirect(false);
+    }
+  }, [redirect, project]);
 
   if (!project) {
     return (
@@ -56,13 +70,13 @@ export const Project = () => {
               {project.subTitle}
             </p>
             {project.link && (
-              <Button size="lg" variant="outline" className="mt-6 w-fit">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
+              <Button
+                size="lg"
+                variant="outline"
+                className="mt-6 w-fit"
+                onClick={() => setShowWarningModal(true)}
+              >
+                <span className="inline-flex items-center gap-2">
                   View Live Project
                   <svg
                     width="24"
@@ -80,8 +94,38 @@ export const Project = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </a>
+                </span>
               </Button>
+            )}
+            {showWarningModal && (
+              <Modal
+                title="Notice: Backend Currently Offline"
+                onClose={() => setShowWarningModal(false)}
+                showContactButton={true}
+              >
+                <div>
+                  I've been encountering issues with AWS, so the backend for
+                  this project is currently offline.
+                  <br />
+                  <br />
+                  A video demo of the project is coming soon! If you'd like to
+                  see the project in action before the video is up, feel free to
+                  contact me to organize a Zoom call, or send me your email and
+                  I'll notify you as soon as the video is available.
+                  <br />
+                  <br />
+                  If you still want to visit the live project, you can do so by
+                  clicking here:{" "}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline"
+                  >
+                    Go to Live Project
+                  </a>
+                </div>
+              </Modal>
             )}
           </div>
         </div>
