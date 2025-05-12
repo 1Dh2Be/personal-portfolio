@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { useState } from "react";
 import React from "react";
+import ScrollToTop from "@/utils/ScrollToTop";
 
 const imageMap: any = {
   light: {
@@ -52,6 +53,7 @@ export const Project = () => {
 
   return (
     <Container className="relative z-[5] min-h-screen py-10 bg-bg-primary theme-transition rounded-b-4xl">
+      <ScrollToTop />
       <div className="flex flex-col gap-16 mt-24">
         {/* Project Header - Full Width */}
         <div className="w-full">
@@ -99,30 +101,43 @@ export const Project = () => {
             )}
             {showWarningModal && (
               <Modal
-                title="Notice: Backend Currently Offline"
+                title="m19 Chat Access Information"
                 onClose={() => setShowWarningModal(false)}
                 showContactButton={true}
               >
                 <div>
-                  I've been encountering issues with AWS, so the backend for
-                  this project is currently offline.
+                  Good news! The m19 Chat backend is now live and fully
+                  functional.
                   <br />
                   <br />
-                  A video demo of the project is coming soon! If you'd like to
-                  see the project in action before the video is up, feel free to
-                  contact me to organize a Zoom call, or send me your email and
-                  I'll notify you as soon as the video is available.
+                  <strong>Free Account Access:</strong>
+                  <br />
+                  You can use the following credentials to access the full
+                  features of m19 Chat:
+                  <div className="mt-2 p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
+                    <p>
+                      <strong>Email:</strong> guestuser@gmail.com
+                    </p>
+                    <p>
+                      <strong>Password:</strong> Testaccount@#
+                    </p>
+                  </div>
+                  <br />
+                  <strong>Pro Account Features:</strong>
+                  <br />
+                  If you'd like to test the Pro account features or have any
+                  questions about the project, please feel free to contact me
+                  using the button below.
                   <br />
                   <br />
-                  If you still want to visit the live project, you can do so by
-                  clicking here:{" "}
+                  You can visit the live project by clicking here:{" "}
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 underline"
                   >
-                    Go to Live Project
+                    Go to m19 Chat
                   </a>
                 </div>
               </Modal>
