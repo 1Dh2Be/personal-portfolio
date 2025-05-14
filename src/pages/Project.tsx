@@ -114,18 +114,6 @@ const sectionVariants = {
   },
 };
 
-const contentVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
 export const Project = () => {
   const { projectSlug } = useParams();
   const { theme } = useTheme();
