@@ -5,46 +5,114 @@ import { ThemeToggleIcon } from "@/assets/icons/ThemeToggleIcon";
 import { MenuIcon } from "@/assets/icons/Menu";
 import { Container } from "@/utils/Container";
 import { Link } from "react-router";
+import { motion } from "motion/react";
+import { useVariant } from "@/utils/animations";
+
+// Animation variants
+const nameVariants = {
+  initial: {
+    y: -50,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "linear",
+      delay: 0.2,
+    },
+  },
+};
+
+const linkVariants = {
+  initial: {
+    y: 20,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "linear",
+      delay: 0.2,
+    },
+  },
+};
+
+const hrVariants = {
+  initial: {
+    scaleX: 0,
+    opacity: 0,
+  },
+  animate: {
+    scaleX: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
 
 export const Header = () => {
   return (
     <Container className="relative z-[2] bg-bg-primary theme-transition">
       <header className="relative bg-bg-primary theme-transition">
-        <section className="flex flex-col lg:flex-row xl:items-center">
-          <div className="flex-1 flex items-center">
+        <motion.section className="flex flex-col lg:flex-row xl:items-center">
+          <motion.div
+            {...useVariant(nameVariants)}
+            className="flex-1 flex items-center"
+          >
             <a href="/">
               <h1>MIMOUN</h1>
             </a>
-          </div>
+          </motion.div>
 
-          <div className="flex-1 flex items-center">
+          <motion.div
+            {...useVariant(nameVariants)}
+            className="flex-1 flex items-center"
+          >
             <a href="/">
               <h1>ATMANI</h1>
             </a>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <hr className="border-border-primary mb-4 theme-transition" />
+        <motion.hr
+          {...useVariant(hrVariants)}
+          className="border-border-primary mb-4 theme-transition"
+        />
 
         <section className="flex items-center">
           <div className="flex-1 flex items-center">
-            <div className="flex-1 hidden md:block">
+            <motion.div
+              {...useVariant(linkVariants)}
+              className="flex-1 hidden md:block"
+            >
               <AnimatedText text="projects" url="/projects" />
               <h4>More than 15</h4>
-            </div>
+            </motion.div>
 
-            <div className="flex-1">
+            <motion.div {...useVariant(linkVariants)} className="flex-1">
               <AnimatedText text="about" url="/about" />
               <h4>Since sep, 2024</h4>
-            </div>
+            </motion.div>
           </div>
 
-          <nav className="flex items-center gap-2">
+          <motion.nav
+            {...useVariant(linkVariants)}
+            className="flex items-center gap-2"
+          >
             <MenuIcon />
             <ThemeToggleIcon />
-          </nav>
+          </motion.nav>
 
-          <div className="flex-1 hidden md:flex items-center justify-end gap-5">
+          <motion.div
+            {...useVariant(linkVariants)}
+            className="flex-1 hidden md:flex items-center justify-end gap-5"
+          >
             <AnimatedText
               text={
                 <span className="flex items-center gap-2">
@@ -57,7 +125,7 @@ export const Header = () => {
             <Button size="lg">
               <Link to="/contact">Contact me</Link>
             </Button>
-          </div>
+          </motion.div>
         </section>
       </header>
     </Container>

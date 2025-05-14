@@ -12,6 +12,7 @@ import { Button } from "./ui/Button";
 import { Link } from "react-router";
 import { ProjectCards } from "./ui/ProjectCards";
 import { useTheme } from "@/context/ThemeContext";
+import { motion } from "motion/react";
 
 type ThemeImages = {
   [key: string]: {
@@ -31,48 +32,152 @@ const imageMap: ThemeImages = {
   },
 };
 
+// Animation variants
+const titleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+      delay: 0.2,
+    },
+  },
+};
+
+const buttonVariants = {
+  hidden: {
+    opacity: 0,
+    y: 15,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      delay: 0.3,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.4,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export const ProjectsThumbnail = () => {
   const { theme } = useTheme();
   const currentTheme = theme === "dark" ? "dark" : "light";
 
+  // Viewport options for animation triggers
+  const viewportOptions = {
+    once: true,
+    amount: 0.2,
+    margin: "100px 0px",
+  };
+
   return (
     <section id="projects" className="pt-8 lg:pt-20 pb-15 md:pb-30">
       <div className="gap-4 lg:gap-8 flex flex-col md:flex-row justify-between items-start mb-8">
-        <h2 className="text-text-primary text-3xl md:text-4xl lg:text-[64px] font-bold flex-1">
+        <motion.h2
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOptions}
+          className="text-text-primary text-3xl md:text-4xl lg:text-[64px] font-bold flex-1"
+        >
           Recent works
-        </h2>
+        </motion.h2>
 
         <div className="flex-1 mt-4 md:mt-0">
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <motion.p
+            variants={textVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="text-gray-700 dark:text-gray-300 mb-4"
+          >
             Every project here is a step in my journey as a self taught
             developer. I love turning ideas into real, working products whether
             it's a tool to solve a problem, a website to share a story, or just
             something cool I wanted to build. I'm always learning,
             experimenting, and pushing myself to create things that matter.
-          </p>
-          <Button size="lg" variant="outline">
-            <Link
-              to="/projects"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              All projects
-            </Link>
-          </Button>
+          </motion.p>
+          <motion.div
+            variants={buttonVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+          >
+            <Button size="lg" variant="outline">
+              <Link to="/projects">All projects</Link>
+            </Button>
+          </motion.div>
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 lg:gap-8">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOptions}
+        className="flex flex-col md:flex-row gap-4 lg:gap-8"
+      >
         {ProjectsData.map((project, i) => (
-          <ProjectCards
-            key={i}
-            src={imageMap[currentTheme][project.image]}
-            projectName={project.title}
-            projectType={project.projectType}
-            projectDate={project.date}
-            slug={project.slug}
-          />
+          <motion.div key={i} variants={cardVariants}>
+            <ProjectCards
+              src={imageMap[currentTheme][project.image]}
+              projectName={project.title}
+              projectType={project.projectType}
+              projectDate={project.date}
+              slug={project.slug}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

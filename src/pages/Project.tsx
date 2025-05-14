@@ -11,6 +11,7 @@ import { Modal } from "@/components/ui/Modal";
 import { useState } from "react";
 import React from "react";
 import ScrollToTop from "@/utils/ScrollToTop";
+import { motion } from "motion/react";
 
 const imageMap: any = {
   light: {
@@ -23,10 +24,119 @@ const imageMap: any = {
   },
 };
 
+// Animation variants
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const subtitleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
+
+const buttonVariants = {
+  hidden: {
+    opacity: 0,
+    y: 15,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const sectionVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    scale: 0.97,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const contentVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
 export const Project = () => {
   const { projectSlug } = useParams();
   const { theme } = useTheme();
   const currentTheme = theme === "dark" ? "dark" : "light";
+
+  // Viewport options for scroll animations
+  const viewportOptions = {
+    once: true,
+    amount: 0.2,
+    margin: "50px 0px",
+  };
 
   const project = ProjectsData.find((p) => p.slug === projectSlug);
 
@@ -56,9 +166,17 @@ export const Project = () => {
       <ScrollToTop />
       <div className="flex flex-col gap-16 mt-24">
         {/* Project Header - Full Width */}
-        <div className="w-full">
+        <motion.div
+          className="w-full"
+          variants={headerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
+            <motion.div
+              className="flex flex-col gap-2"
+              variants={titleVariants}
+            >
               <div className="flex items-center gap-3 text-text-secondary">
                 <span className="text-lg">{project.projectType}</span>
                 <span>•</span>
@@ -67,37 +185,42 @@ export const Project = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary">
                 {project.title}
               </h1>
-            </div>
-            <p className="text-text-secondary text-xl max-w-2xl">
+            </motion.div>
+            <motion.p
+              className="text-text-secondary text-xl max-w-2xl"
+              variants={subtitleVariants}
+            >
               {project.subTitle}
-            </p>
+            </motion.p>
             {project.link && (
-              <Button
-                size="lg"
-                variant="outline"
-                className="mt-6 w-fit"
-                onClick={() => setShowWarningModal(true)}
-              >
-                <span className="inline-flex items-center gap-2">
-                  View Live Project
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5"
-                  >
-                    <path
-                      d="M7 17L17 7M17 7H7M17 7V17"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </Button>
+              <motion.div variants={buttonVariants}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="mt-6 w-fit"
+                  onClick={() => setShowWarningModal(true)}
+                >
+                  <span className="inline-flex items-center gap-2">
+                    View Live Project
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        d="M7 17L17 7M17 7H7M17 7V17"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </Button>
+              </motion.div>
             )}
             {showWarningModal && (
               <Modal
@@ -143,10 +266,15 @@ export const Project = () => {
               </Modal>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Project Image */}
-        <div className="w-full">
+        <motion.div
+          className="w-full"
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <img
             src={
               imageMap[currentTheme][
@@ -156,12 +284,18 @@ export const Project = () => {
             alt={project.alt}
             className="w-full rounded-2xl h-auto object-cover"
           />
-        </div>
+        </motion.div>
 
-        {/* Main Content - Keep existing content with max-width */}
+        {/* Main Content - Content with scroll-triggered animations */}
         <div className="max-w-4xl mx-auto w-full flex flex-col gap-16 px-4">
           {/* Project Overview */}
-          <div className="flex flex-col gap-6">
+          <motion.div
+            className="flex flex-col gap-6"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+          >
             <h2 className="text-2xl font-semibold text-text-primary">
               Project Overview
             </h2>
@@ -202,37 +336,63 @@ export const Project = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Project Description */}
-          <div className="flex flex-col gap-6">
+          <motion.div
+            className="flex flex-col gap-6"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+          >
             <h2 className="text-2xl font-semibold text-text-primary">
               About the Project
             </h2>
             <p className="text-text-secondary text-lg leading-relaxed">
               {project.longDescription}
             </p>
-          </div>
+          </motion.div>
 
           {/* Project Journey */}
-          <div className="flex flex-col gap-6">
+          <motion.div
+            className="flex flex-col gap-6"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+          >
             <h2 className="text-2xl font-semibold text-text-primary">
               The Journey
             </h2>
             <p className="text-text-secondary text-lg leading-relaxed whitespace-pre-line">
               {project.journey}
             </p>
-          </div>
+          </motion.div>
 
           {/* Challenges */}
           {project.challenges && project.challenges.length > 0 && (
-            <div className="flex flex-col gap-8">
+            <motion.div
+              className="flex flex-col gap-8"
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOptions}
+            >
               <h2 className="text-2xl font-semibold text-text-primary">
                 {project.challangeIntro}
               </h2>
               <div className="flex flex-col gap-12">
                 {project.challenges.map((challenge, index) => (
-                  <div key={index} className="flex flex-col gap-4">
+                  <motion.div
+                    key={index}
+                    className="flex flex-col gap-4"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOptions}
+                    variants={sectionVariants}
+                    transition={{ delay: index * 0.1 }}
+                  >
                     <h3 className="text-xl font-medium text-text-primary">
                       {challenge.title}
                     </h3>
@@ -247,21 +407,27 @@ export const Project = () => {
                         {challenge.solutionDescription}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* Final Thoughts */}
-          <div className="flex flex-col gap-6">
+          <motion.div
+            className="flex flex-col gap-6"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+          >
             <h2 className="text-2xl font-semibold text-text-primary">
               Final Thoughts
             </h2>
             <p className="text-text-secondary text-lg leading-relaxed">
               {project.finalThoughts}
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </Container>

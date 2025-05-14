@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 import { Modal } from "@/components/ui/Modal";
+import { motion } from "motion/react";
 
 interface FormValues {
   name: string;
@@ -23,6 +24,96 @@ const inputStyles = {
 const textareaStyles = {
   base: `${inputStyles.base} resize-none`,
 } as const;
+
+// Animation variants
+const titleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+      delay: 0.2,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const formVariants = {
+  hidden: {
+    opacity: 0,
+    x: -30,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const infoVariants = {
+  hidden: {
+    opacity: 0,
+    x: 30,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 15,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
 
 export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,25 +158,44 @@ export const Contact = () => {
     <Container className="relative z-[5] min-h-screen py-5 mobile-md:py-10 bg-bg-primary theme-transition rounded-b-4xl">
       <div className="flex flex-col gap-16 mobile-md:py-10 md:py-0">
         {/* Header */}
-        <div className="w-full">
+        <motion.div
+          className="w-full"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           <div className="flex flex-col gap-4">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary">
+            <motion.h2
+              variants={titleVariants}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary"
+            >
               Let's Connect
-            </h2>
-            <p className="text-text-secondary text-xl max-w-2xl">
+            </motion.h2>
+            <motion.p
+              variants={textVariants}
+              className="text-text-secondary text-xl max-w-2xl"
+            >
               Have a project in mind or just want to chat? I'd love to hear from
               you. Fill out the form below or reach out through social media.
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="flex flex-col gap-8">
+          <motion.div
+            className="flex flex-col gap-8"
+            variants={formVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
               {({ values, handleChange }) => (
                 <Form className="flex flex-col gap-6">
-                  <label className="flex flex-col gap-2">
+                  <motion.label
+                    className="flex flex-col gap-2"
+                    variants={itemVariants}
+                  >
                     <span className="text-text-primary font-medium">Name</span>
                     <input
                       type="text"
@@ -96,9 +206,12 @@ export const Contact = () => {
                       className={inputStyles.base}
                       placeholder="Your name"
                     />
-                  </label>
+                  </motion.label>
 
-                  <label className="flex flex-col gap-2">
+                  <motion.label
+                    className="flex flex-col gap-2"
+                    variants={itemVariants}
+                  >
                     <span className="text-text-primary font-medium">Email</span>
                     <input
                       type="email"
@@ -109,9 +222,12 @@ export const Contact = () => {
                       className={inputStyles.base}
                       placeholder="your@email.com"
                     />
-                  </label>
+                  </motion.label>
 
-                  <label className="flex flex-col gap-2">
+                  <motion.label
+                    className="flex flex-col gap-2"
+                    variants={itemVariants}
+                  >
                     <span className="text-text-primary font-medium">
                       Message
                     </span>
@@ -124,29 +240,45 @@ export const Contact = () => {
                       className={textareaStyles.base}
                       placeholder="Tell me about job opportunities, potential collaborations, or project ideas..."
                     />
-                  </label>
+                  </motion.label>
 
-                  <Button
-                    type="submit"
-                    size="xl"
-                    className="w-full mt-4"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
+                  <motion.div variants={itemVariants}>
+                    <Button
+                      type="submit"
+                      size="xl"
+                      className="w-full mt-4"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </motion.div>
                 </Form>
               )}
             </Formik>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-semibold text-text-primary">
+          <motion.div
+            className="flex flex-col gap-8"
+            variants={infoVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div
+              className="flex flex-col gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.h2
+                className="text-2xl font-semibold text-text-primary"
+                variants={itemVariants}
+              >
                 Other Ways to Connect
-              </h2>
+              </motion.h2>
               <div className="flex flex-col gap-4 w-fit">
-                <a
+                <motion.a
+                  variants={itemVariants}
                   href="mailto:mimounb1597@gmail.com"
                   className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors"
                 >
@@ -167,8 +299,9 @@ export const Contact = () => {
                     />
                   </svg>
                   mimounb1597@gmail.com
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  variants={itemVariants}
                   href="https://github.com/1Dh2Be"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -191,8 +324,9 @@ export const Contact = () => {
                     />
                   </svg>
                   GitHub
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  variants={itemVariants}
                   href="https://www.linkedin.com/in/mimoun-atmani/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -229,23 +363,32 @@ export const Contact = () => {
                     />
                   </svg>
                   LinkedIn
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-4 mb-15">
-              <h2 className="text-2xl font-semibold text-text-primary">
+            <motion.div
+              className="flex flex-col gap-4 mb-15"
+              variants={containerVariants}
+            >
+              <motion.h2
+                className="text-2xl font-semibold text-text-primary"
+                variants={itemVariants}
+              >
                 Current Status
-              </h2>
-              <p className="text-text-secondary max-w-[600px]">
+              </motion.h2>
+              <motion.p
+                className="text-text-secondary max-w-[600px]"
+                variants={itemVariants}
+              >
                 I'm actively seeking full time opportunities while remaining
                 open to freelance projects. Whether you need a website, web
                 application, or have an interesting development challenge, I'm
                 here to help bring your vision to life. Let's connect and
                 discuss how I can contribute to your team or project.
-              </p>
-            </div>
-          </div>
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 

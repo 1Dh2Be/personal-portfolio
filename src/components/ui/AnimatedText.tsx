@@ -36,8 +36,6 @@ export const AnimatedText = ({
       if (url === "/about") {
         e.preventDefault();
         setIsAboutModalOpen(true);
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
   };
